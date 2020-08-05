@@ -4,9 +4,7 @@ import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.PaymentEntity;
 import com.atguigu.springcloud.service.PaymentService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -15,7 +13,8 @@ import javax.annotation.Resource;
  * @data 2020-08-2020/8/5-11:13
  * @Description
  */
-@Controller
+@RestController
+// == @ResponseBody ＋ @Controller
 public class PaymentController {
     @Resource
     private PaymentService paymentService;
@@ -49,11 +48,11 @@ public class PaymentController {
     public CommonResult getPaymentByid(@PathVariable("id") Long id){
         PaymentEntity paymentEntity = paymentService.getPaymentById(id);
 
-        System.out.println(paymentEntity);
+        System.out.println("************插入结果"+paymentEntity);
         if(paymentEntity != null){
             return new CommonResult(200,"查询成功",paymentEntity);
         }else{
-            return new CommonResult(200,id+"查询失败",null);
+            return new CommonResult(444,id+"查询失败",null);
         }
     }
 }

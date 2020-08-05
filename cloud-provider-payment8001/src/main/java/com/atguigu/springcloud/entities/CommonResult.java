@@ -18,7 +18,6 @@ public class CommonResult<T> implements Serializable {
     private String msg;
     private T data; //传入什么类型，返回什么类型
     public CommonResult(Integer code, String msg) {
-        this.code = code;
-        this.msg = msg;
+        this(code,msg,null);
     }
 }

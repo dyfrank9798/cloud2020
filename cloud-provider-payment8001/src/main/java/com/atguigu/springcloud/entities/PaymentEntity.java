@@ -16,6 +16,4 @@ import java.io.Serializable;
 public class PaymentEntity implements Serializable {
     private Long id;
     private String serial;
-
-
 }
