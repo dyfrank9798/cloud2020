@@ -1,5 +1,6 @@
 server:
   port: 8001
+
 spring:
   application:
     name: cloud-payment-service
@@ -8,7 +9,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     # mysql驱动类
     driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/sc2020?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/sc2020?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
     username: root
     password: 123456
 mybatis:
