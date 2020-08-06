@@ -3,6 +3,7 @@ package com.atguigu.springcloud.controller;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.PaymentEntity;
 import com.atguigu.springcloud.service.PaymentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,7 @@ import javax.annotation.Resource;
  */
 @RestController
 // == @ResponseBody ＋ @Controller
+@Slf4j
 public class PaymentController {
     @Resource
     private PaymentService paymentService;
@@ -34,7 +36,7 @@ public class PaymentController {
      * 删除资源应该使用DELETE
      */
     @PostMapping(value="/payment/create")
-    public CommonResult create(PaymentEntity paymentEntity){
+    public CommonResult create(@RequestBody PaymentEntity paymentEntity){
         int result = paymentService.create(paymentEntity);
         System.out.println("************插入结果"+result);
         if(result>0){
