@@ -88,5 +88,9 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>com.atguigu.springcloud</groupId>
+            <artifactId>cloud-api-common</artifactId>
+        </dependency>
     </dependencies>
 </project>

@@ -169,5 +169,7 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.2.2.RELEASE" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.10" level="project" />
+    <orderEntry type="module" module-name="cloud-api-common" />
+    <orderEntry type="library" name="Maven: cn.hutool:hutool-all:5.3.10" level="project" />
   </component>
 </module>
