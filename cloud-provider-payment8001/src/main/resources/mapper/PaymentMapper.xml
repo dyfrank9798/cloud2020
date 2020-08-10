@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.springcloud.dao.PaymentDao">
     <insert id="create" parameterType="com.atguigu.springcloud.entities.PaymentEntity" useGeneratedKeys="true" keyProperty="id">
-      insert into payment(serial) values (#{serial});
+      insert into payment(serial,time) values (#{serial},#{time});
     </insert>
 
 

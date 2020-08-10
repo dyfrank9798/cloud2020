@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author zhangrongchuan
@@ -20,6 +22,8 @@ public class PaymentServiceImpl implements PaymentService {
     private PaymentDao paymentDao;
 
     public int create(PaymentEntity payment){
+        String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        payment.setTime(date);
         return paymentDao.create(payment);
     };
 
