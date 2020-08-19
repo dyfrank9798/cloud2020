@@ -15,4 +15,5 @@ eureka:
     #    集群设置为true，才能配合ribbon使用负载均衡
     fetchRegistry: true
     service-url:
-      defaultZone: http://localhost:7001/eureka
+#      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/

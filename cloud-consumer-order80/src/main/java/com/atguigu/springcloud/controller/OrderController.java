@@ -5,7 +5,6 @@ import com.atguigu.springcloud.entities.PaymentEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -27,6 +26,7 @@ public class OrderController {
     @GetMapping("/consumer/payment/create")
     public CommonResult<PaymentEntity> create(PaymentEntity payment) {
         System.out.println(payment);
+//        restTemplate
         return restTemplate.postForObject(PAYMENT_URL + "/payment/create", payment, CommonResult.class);
     }
 
@@ -34,6 +34,7 @@ public class OrderController {
 ///"sale_prj/{salePrjId}?page={page}&rows={rows}"
     public CommonResult<PaymentEntity> getPayment(@PathVariable("id") Long id) {
         System.out.println(id);
+//        restTemplate
         return restTemplate.getForObject(PAYMENT_URL + "/payment/get/" + id, CommonResult.class);
     }
 }
