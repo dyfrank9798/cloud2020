@@ -5,9 +5,12 @@ import com.atguigu.springcloud.entities.PaymentEntity;
 import com.atguigu.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author zhangrongchuan
@@ -23,8 +26,8 @@ public class PaymentController {
     @Value("${server.port}")
     private String serverPort;
 
-
-
+    @Resource
+    private DiscoveryClient discoveryClient;
     /**
      *
      * @PostMapping用于将HTTP post请求映射到特定处理程序的方法注解
@@ -60,5 +63,24 @@ public class PaymentController {
         }else{
             return new CommonResult(444,id+"查询失败",null);
         }
+    }
+
+
+    @GetMapping(value="/payment/discovery")
+    public Object discovery(){
+        //所有微服务
+        List<String> services =  discoveryClient.getServices();
+        for(String service :services){
+            System.out.println(service);
+        }
+        //这个微服务下面的实例：8001,8002
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        for(ServiceInstance instance :instances){
+            System.out.println(instance.getServiceId());
+            System.out.println(instance.getHost());
+            System.out.println(instance.getPort());
+            System.out.println(instance.getUri());
+        }
+        return this.discoveryClient;
     }
 }
