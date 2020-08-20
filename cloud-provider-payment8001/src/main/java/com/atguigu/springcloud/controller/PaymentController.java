@@ -65,7 +65,13 @@ public class PaymentController {
         }
     }
 
-
+    /**
+     *
+     * @return
+     *                                          寻找
+     * (80或者其他的服务)利用/payment/discovery  ----->>>>   8001,8002
+     *
+     */
     @GetMapping(value="/payment/discovery")
     public Object discovery(){
         //所有微服务
