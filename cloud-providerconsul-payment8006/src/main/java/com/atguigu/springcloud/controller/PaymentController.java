@@ -12,10 +12,7 @@ import java.util.UUID;
  * @Description
  *
  *
- * 在consul.exe文件夹内，打开控制体，输入下面命令
- * consul agent -dev
- * 输入localhost:8005即可展示consul的页面
- *
+
  */
 @RestController
 @Slf4j
