@@ -13,6 +13,7 @@
 
     <dependencies>
         <!--eureka-client-->
+        <!--带着ribbon，点击源码可看-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>

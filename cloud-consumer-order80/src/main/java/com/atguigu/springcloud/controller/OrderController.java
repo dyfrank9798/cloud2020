@@ -3,6 +3,7 @@ package com.atguigu.springcloud.controller;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.PaymentEntity;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +34,7 @@ public static final String PAYMENT_URL = "http://cloud-payment-service";
         System.out.println(payment);
 //        restTemplate
         return restTemplate.postForObject(PAYMENT_URL + "/payment/create", payment, CommonResult.class);
+//        return restTemplate.postForEntity(PAYMENT_URL + "/payment/create", payment, CommonResult.class).getBody();
     }
 
     @GetMapping("/consumer/payment/get/{id}")
@@ -41,5 +43,29 @@ public static final String PAYMENT_URL = "http://cloud-payment-service";
         System.out.println(id);
 //        restTemplate
         return restTemplate.getForObject(PAYMENT_URL + "/payment/get/" + id, CommonResult.class);
+//        return restTemplate.getForEntity(PAYMENT_URL + "/payment/get/" + id, CommonResult.class).getBody();
+    }
+
+
+    @GetMapping("/consumer/payment/createForEntity")
+    public CommonResult<PaymentEntity> create2(PaymentEntity payment) {
+        System.out.println(payment);
+        ResponseEntity<CommonResult> entity =restTemplate.postForEntity(PAYMENT_URL + "/payment/create", payment, CommonResult.class);
+        if(entity.getStatusCode().is2xxSuccessful()){
+            return entity.getBody();
+        }else {
+            return new CommonResult<>(444,"操作失败");
+        }
+    }
+
+    @GetMapping("/consumer/payment/getForEntity/{id}")
+    public CommonResult<PaymentEntity> getPayment2(@PathVariable("id") Long id) {
+        System.out.println(id);
+        ResponseEntity<CommonResult> entity = restTemplate.getForEntity(PAYMENT_URL + "/payment/get/" + id, CommonResult.class);
+        if(entity.getStatusCode().is2xxSuccessful()){
+            return entity.getBody();
+        }else {
+            return new CommonResult<>(444,"操作失败");
+        }
     }
 }
